@@ -1,0 +1,63 @@
+---
+title: "Practice 5.1"
+author: "Lesly"
+date: "2024-11-04"
+output: html_document
+---
+
+## Load required libraries
+```{r}
+library(rgbif)
+library(dplyr)
+library(ggplot2)
+library(sf)
+library(rnaturalearth)
+library(rnaturalearthdata)
+```
+
+## Download occurrence data for Macaca cyclopis from gbif
+```{r}
+gbif_macaca <- occ_search(
+  scientificName = "Macaca cyclopis",
+  hasCoordinate = TRUE,
+  basisOfRecord = "HUMAN_OBSERVATION",
+  limit = 1000)
+```
+
+## Extract only the data frame from the result
+```{r}
+gbif_macaca_data <- gbif_macaca$data
+```
+
+## Convert to an sf object
+```{r}
+macaca_sf <- st_as_sf(
+  gbif_macaca_data,
+  coords = c("decimalLongitude", "decimalLatitude"),
+  crs = 4326)
+```
+
+## Load the world map
+```{r}
+world <- ne_countries(scale = "medium", returnclass = "sf")
+```
+
+## Plot the map
+```{r}
+ggplot(data = world) +
+  geom_sf(fill = "lightgray", color = "white") +
+  geom_sf(data = macaca_sf, color = "red", size = 1.5) +
+  coord_sf(xlim = c(119, 123), ylim = c(21, 26), expand = FALSE) +
+  theme_minimal() +
+  labs(title = "Distribution of Macaca cyclopis in Taiwan",
+       x = "Longitude",
+       y = "Latitude")
+```
+
+
+
+
+
+
+
+
