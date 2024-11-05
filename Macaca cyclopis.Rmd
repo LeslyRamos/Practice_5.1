@@ -42,7 +42,7 @@ macaca_sf <- st_as_sf(
 world <- ne_countries(scale = "medium", returnclass = "sf")
 ```
 
-## Plot the map
+## Plot the map (without fixed projection)
 ```{r}
 ggplot(data = world) +
   geom_sf(fill = "lightgray", color = "white") +

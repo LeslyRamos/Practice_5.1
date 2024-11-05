@@ -39,7 +39,9 @@ ggplot(data = world) +
        x = "Longitude",
        y = "Latitude")
 
-####
+
+
+#####
 # Define a projection suitable for Taiwan
 taiwan_projection <- "+proj=lcc +lat_1=25 +lat_2=47 +lon_0=121"
 
@@ -56,4 +58,4 @@ ggplot(data = world_proj) +
   labs(title = "Projected Distribution of Macaca cyclopis in Taiwan",
        x = "Longitude",
        y = "Latitude")
-
+##Empty map :(

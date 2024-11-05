@@ -403,8 +403,8 @@ library(rnaturalearthdata)</code></pre>
 <h2>Load the world map</h2>
 <pre class="r"><code>world &lt;- ne_countries(scale = &quot;medium&quot;, returnclass = &quot;sf&quot;)</code></pre>
 </div>
-<div id="plot-the-map" class="section level2">
-<h2>Plot the map</h2>
+<div id="plot-the-map-without-fixed-projection" class="section level2">
+<h2>Plot the map (without fixed projection)</h2>
 <pre class="r"><code>ggplot(data = world) +
   geom_sf(fill = &quot;lightgray&quot;, color = &quot;white&quot;) +
   geom_sf(data = macaca_sf, color = &quot;red&quot;, size = 1.5) +
